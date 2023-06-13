@@ -1,7 +1,21 @@
+import { useState } from 'react'
 import logo from '../img/logo.png'
 import './Login.css'
 
 export function Login() {
+
+    const [Email, setEmail] = useState('')
+    const [Password, setPassword] = useState('')
+
+
+    const handleButtonClick = (e) => {
+        if(!Email || !Password){
+            alert("Error")
+            return
+        }
+        alert(`${Email}\n ${Password}`)
+    };
+
     return(
 
         <main>
@@ -17,15 +31,15 @@ export function Login() {
                     <form>
                         <div className="inputEmail">
                             <label for="Email">E-mail</label>
-                            <input type="text" id="Email" />
+                            <input type="email" id="Email" placeholder='Digite seu e-mail' onChange={e => setEmail(e.target.value)}/>
                         </div>
 
                         <div className="inputSenha">
                             <label for="Senha">Senha</label>
-                            <input type="text" id="Senha" />
+                            <input type="password" id="Senha" onChange={e => setPassword(e.target.value)}/>
                         </div>
 
-                        <button className='buttonEntrar'>
+                        <button className='buttonEntrar' onClick={handleButtonClick}>
                             Entrar
                         </button>
                     </form>

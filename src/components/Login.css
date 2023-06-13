@@ -47,6 +47,24 @@ main .login .content form .inputSenha input {
     padding: 1rem 0.75rem;
 }
 
+main .login .content form .inputEmail input:hover,
+main .login .content form .inputSenha input:hover,
+main .login .content form .inputEmail input:focus,
+main .login .content form .inputSenha input:focus {
+    border: 1px solid var(--purple);
+    outline: none;
+}
+
+main .login .content form .inputEmail input:invalid,
+main .login .content form .inputSenha input:invalid {
+    border: 1px solid red;
+}
+
+main .login .content form .inputEmail input:disabled,
+main .login .content form .inputSenha input:disabled {
+    border: 0;
+}
+
 main .login .content form .buttonEntrar {
     padding: 1rem 0;
     margin-bottom: 1rem;
@@ -55,11 +73,22 @@ main .login .content form .buttonEntrar {
     background-color: var(--purple);
     font-weight: 700;
     color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+main .login .content form .buttonEntrar:hover {
+    background-color: #9F67FF;
 }
 
 main .login .content p .destaque {
     font-weight: 700;
     color: var(--purple);
+    cursor: pointer;
+}
+
+main .login .content p .destaque:hover {
+    text-decoration: underline;
 }
 
 
