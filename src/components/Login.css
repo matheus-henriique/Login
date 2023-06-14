@@ -34,6 +34,12 @@ main .login .content form .inputSenha {
     gap: 8px;
 }
 
+main .login .content form .inputEmail .error {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+}
+
 main .login .content form .inputEmail .msg {
     margin: 0;
     padding: 0rem .2rem;
@@ -48,16 +54,36 @@ main .login .content form .inputEmail .ativo {
     display: block;
 }
 
+main .login .content form .inputSenha {
+    position: relative;
+}
+
 main .login .content form .inputSenha .box {
     display: flex;
     justify-content: space-between;
 }
 
-main .login .content form .inputSenha .esqueceuSenha{
+main .login .content form .inputSenha .box .esqueceuSenha{
     cursor: pointer;
     font-size: var(--desk-sub);
     font-weight: bold;
     color: var(--purple);
+}
+
+main .login .content form .inputSenha .passwordContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+main .login .content form .inputSenha .passwordContainer .inputBox{
+    width: 100%;
+}
+
+main .login .content form .inputSenha .passwordContainer .passwordIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }
 
 main .login .content form .inputEmail label,

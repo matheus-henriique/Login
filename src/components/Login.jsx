@@ -1,24 +1,36 @@
 import { useState } from 'react'
-import logo from '../img/logo.png'
+
 import './Login.css'
 
+import logo from '../img/logo.png'
+import showPasswordIcon from '../img/eye.svg'
+import hidePasswordIcon from '../img/eye-off.svg'
+
 export function Login() {
-    const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('')
-    const [ativo, setAtivo] = useState(false);
+    const [Senha, setSenha] = useState("")
+    const [Email, setEmail] = useState("")
+    const [EmailError, setEmailError] = useState("")
+    const [showPassword, setShowPassword] = useState(false)
 
 
-    const handleButtonClick = (e) => {
-
-         if (!Email || !Password) {
-            return
+    function Login(e) {
+        if (validaEmail(Email)) {
+            return alert(`Seu Email é: ${Email}\nSua Senha é: ${Senha}`)
+        } else if(!Senha && !Email){
+            e.preventDefault()
+            alert("Digite nos inputs")
+        } else {
+            setEmailError("Digite um Email válido")
         }
-        
-        alert(`Email: ${Email}\nSenha:${Password}`)
-    };
+    }
 
-    const showDanger = `msg ${ativo ? 'ativo' : 'inativo'}`;
+    function validaEmail(Email) {
+        return Email.includes("@")
+    }
 
+    function togglePassword() {
+        setShowPassword(!showPassword)
+    }
 
     return(
 
@@ -35,19 +47,22 @@ export function Login() {
                     <form>
                         <div className="inputEmail">
                             <label for="Email">E-mail</label>
-                            <input type="email" id="Email" placeholder='Digite seu e-mail' onChange={e => setEmail(e.target.value)}/>
-                            <p className={showDanger}>Digite um e-mail valido</p>
+                            <input type="Email" id="Email" placeholder='Digite seu e-mail' onChange={e => setEmail(e.target.value)}/>
+                            {EmailError && <p className="error">{EmailError}</p>}
                         </div>
 
                         <div className="inputSenha">
                             <div className="box">
                                 <label for="Senha">Senha</label>
-                                <span className='esqueceuSenha'>Esqueceu a senha?</span>
+                                <span className='esqueceuSenha'>Esqueceu a Senha?</span>
                             </div>
-                            <input type="password" id="Senha" onChange={e => setPassword(e.target.value)}/>
+                            <div className="passwordContainer">
+                                <input  type={showPassword ? "text" : "password"} id="Senha" className='inputBox' onChange={e => setSenha(e.target.value)}/>
+                                <img className="passwordIcon" src={showPassword ? hidePasswordIcon : showPasswordIcon} alt={showPassword ? "Ocultar Senha" : "Mostrar Senha"} onClick={togglePassword}/>
+                            </div>
                         </div>
 
-                        <button className='buttonEntrar' onClick={handleButtonClick}>
+                        <button className='buttonEntrar' onClick={Login}>
                             Entrar
                         </button>
                     </form>
