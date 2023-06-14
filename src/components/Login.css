@@ -34,8 +34,36 @@ main .login .content form .inputSenha {
     gap: 8px;
 }
 
+main .login .content form .inputEmail .msg {
+    margin: 0;
+    padding: 0rem .2rem;
+    font-size: var(--desk-sub);
+    color: var(--red);
+}
+
+main .login .content form .inputEmail .inativo {
+    display: none;
+}
+main .login .content form .inputEmail .ativo {
+    display: block;
+}
+
+main .login .content form .inputSenha .box {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .login .content form .inputSenha .esqueceuSenha{
+    cursor: pointer;
+    font-size: var(--desk-sub);
+    font-weight: bold;
+    color: var(--purple);
+}
+
 main .login .content form .inputEmail label,
 main .login .content form .inputSenha label {
+    display: flex;
+    justify-content: space-between;
     font-size: var(--desk-sub);
     font-weight: 700;
 }
@@ -57,7 +85,7 @@ main .login .content form .inputSenha input:focus {
 
 main .login .content form .inputEmail input:invalid,
 main .login .content form .inputSenha input:invalid {
-    border: 1px solid red;
+    border: 1px solid var(--red);
 }
 
 main .login .content form .inputEmail input:disabled,

@@ -3,18 +3,22 @@ import logo from '../img/logo.png'
 import './Login.css'
 
 export function Login() {
-
     const [Email, setEmail] = useState('')
     const [Password, setPassword] = useState('')
+    const [ativo, setAtivo] = useState(false);
 
 
     const handleButtonClick = (e) => {
-        if(!Email || !Password){
-            alert("Error")
+
+         if (!Email || !Password) {
             return
         }
-        alert(`${Email}\n ${Password}`)
+        
+        alert(`Email: ${Email}\nSenha:${Password}`)
     };
+
+    const showDanger = `msg ${ativo ? 'ativo' : 'inativo'}`;
+
 
     return(
 
@@ -32,10 +36,14 @@ export function Login() {
                         <div className="inputEmail">
                             <label for="Email">E-mail</label>
                             <input type="email" id="Email" placeholder='Digite seu e-mail' onChange={e => setEmail(e.target.value)}/>
+                            <p className={showDanger}>Digite um e-mail valido</p>
                         </div>
 
                         <div className="inputSenha">
-                            <label for="Senha">Senha</label>
+                            <div className="box">
+                                <label for="Senha">Senha</label>
+                                <span className='esqueceuSenha'>Esqueceu a senha?</span>
+                            </div>
                             <input type="password" id="Senha" onChange={e => setPassword(e.target.value)}/>
                         </div>
 
